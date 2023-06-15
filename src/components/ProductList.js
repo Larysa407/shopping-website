@@ -1,18 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import ProductCard from "./ProductCard";
+import { ProductsContext } from "../context/productsContext";
 
 export default function ProductList() {
-  const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        console.log(data);
-      });
-  }, []);
+  const { products } = useContext(ProductsContext)
 
   return (
     <>

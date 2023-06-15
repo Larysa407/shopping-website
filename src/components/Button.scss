@@ -1,0 +1,21 @@
+.btn{
+    width: 80px;
+    height: 30px;
+    border-radius: 20px;
+    border: 1px solid lightslategrey;
+    box-shadow: 0 3px 4px darkslategray;
+    font-size: 20px;
+    font-size: 12px;
+    
+    &:hover{
+        background-color: rgb(155, 165, 165);
+    }
+}
+
+.confirmBtn,
+.cancelBtn{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
