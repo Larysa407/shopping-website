@@ -5,25 +5,24 @@ import Button from "./Button";
 import Modal from "./Modal";
 import { Star } from "phosphor-react";
 
+
 export default function ProductCard({
   image,
   title,
   color,
-  price
-}) {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(true);
+  price,
+  id
   
+}) {
+  const [modalOpen, setModalOpen] = useState(false); 
+  const [isFavorite, setFavorite] = useState([])
 
-  const toggleFavorite = (e) => {
-    e.preventDefault();
-    if(!isFavorite){
-      setIsFavorite(true)
-      localStorage.setItem("favoriteItems", JSON.stringify([], isFavorite));
-    } else {
-      setIsFavorite(false)
-    }
-  };
+  const handleFavorite = () => {
+    // JSON.parse(localStorage.getItem("favoriteItems"))
+    console.log(id)
+    setFavorite([...isFavorite, {id, title}])
+    localStorage.setItem("favoriteItems", JSON.stringify([...isFavorite, {id, title}]));
+  } 
 
   const handleClick = () => {
     setModalOpen(true);
@@ -49,7 +48,7 @@ export default function ProductCard({
           <div className="card-footer-icons">
             <Star
               size={20}
-              onClick={toggleFavorite}
+              onClick={handleFavorite}
               weight={isFavorite ? "light" :  "fill"}
             />
             {/* weight="fill" для зафарбування зірочки обраного товару*/}
