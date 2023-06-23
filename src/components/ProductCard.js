@@ -6,23 +6,8 @@ import Modal from "./Modal";
 import { Star } from "phosphor-react";
 
 
-export default function ProductCard({
-  image,
-  title,
-  color,
-  price,
-  id
-  
-}) {
+export default function ProductCard({product, setFav, isFavorite, addToCart}) {
   const [modalOpen, setModalOpen] = useState(false); 
-  const [isFavorite, setFavorite] = useState([])
-
-  const handleFavorite = () => {
-    // JSON.parse(localStorage.getItem("favoriteItems"))
-    console.log(id)
-    setFavorite([...isFavorite, {id, title}])
-    localStorage.setItem("favoriteItems", JSON.stringify([...isFavorite, {id, title}]));
-  } 
 
   const handleClick = () => {
     setModalOpen(true);
@@ -37,21 +22,21 @@ export default function ProductCard({
   };
 
   return (
-    <>
+    <div className="card">
       <div className="card-header"></div>
-      <img className="card-img" src={image} alt="image of product" />
+      <img className="card-img" src={product.image} alt="image of product" />
       <div className="card-body">
-        <h3 className="card-title">{title}</h3>
-        <p className="card-text">{color}</p>
+        <h3 className="card-title">{product.title}</h3>
+        <p className="card-text">{product.color}</p>
         <div className="card-footer">
-          <h4 className="card-text">{price}</h4>
+          <h4 className="card-text">{product.price}</h4>
           <div className="card-footer-icons">
             <Star
               size={20}
-              onClick={handleFavorite}
-              weight={isFavorite ? "light" :  "fill"}
+              id={product.id}
+              onClick={setFav}
+              weight={product.isFavorite ? "fill" : "light"}
             />
-            {/* weight="fill" для зафарбування зірочки обраного товару*/}
             <Button text="Add to cart" onClick={handleClick} />
             {modalOpen && (
               <Modal
@@ -63,7 +48,8 @@ export default function ProductCard({
                     <button
                       href="/"
                       className="confirmBtn"
-                      // onClick={handleAddToCart}
+                      id={product.id}
+                      onClick={addToCart}
                     >
                       Add
                     </button>
@@ -82,6 +68,6 @@ export default function ProductCard({
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

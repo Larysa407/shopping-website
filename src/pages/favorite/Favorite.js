@@ -1,31 +1,30 @@
 import React, { useState, useEffect} from "react";
-import ProductList from "../../components/ProductList";
+import ProductCard from "../../components/ProductList";
 import "../../components/ProductCard.scss";
 
 
-export const Favorite = ({ image, title, color, price }) => {
-    const [fav, setFav] = useState([])
+export const Favorite = () => {
+  const data = JSON.parse(localStorage.getItem("favItems"))
 
-    const show = () => {
-      setFav(localStorage.getItem("favoriteItems"))
-      console.log(setFav)
-    }
-
-    show()
   return (
-    
     <>
-
-      <div className="card-header"></div>
-      <img className="card-img" src={image} alt="image of product" />
-      <div className="card-body">
-        <h3 className="card-title">{title}</h3>
-        <p className="card-text">{color}</p>
-        <div className="card-footer">
-          <h4 className="card-text">{price}</h4>
-          <div className="card-footer-icons"></div>
-        </div>
+    <div className='product-list'>
+    {data==="null" && data.map(element => 
+    <div className="card" key={element.id}>
+    <div className="card-header">
+    <img className="card-img" src={element.image} alt="image of product" />
+    <span className="closeBtn"></span>
+    </div>
+    <div className="card-body">
+      <h3 className="card-title">{element.title}</h3>
+      <p className="card-text">{element.color}</p>
+      <div className="card-footer">
+        <h4 className="card-text">{element.price}</h4>
       </div>
-    </>
-  );
-};
+    </div>
+    </div>
+    )}
+     </div>
+  </>
+  )
+}

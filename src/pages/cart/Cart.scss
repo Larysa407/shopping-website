@@ -1,0 +1,26 @@
+.card-header{
+  position: relative;
+}
+
+.closeBtn {
+    cursor: pointer;
+    position: absolute;
+    top: -30px;
+    right: 15px;
+    width: 26px;
+    height: 2px;
+    background-color: #000;
+    transform: rotate(45deg);
+  
+    &::after {
+      content: "";
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 26px;
+      height: 2px;
+      background-color: #000;
+      transform: rotate(-90deg);
+    }
+  }

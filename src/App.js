@@ -6,7 +6,7 @@ import { Favorite } from './pages/favorite/Favorite';
 import ProductList from './components/ProductList';
 import ProductsProvider from './context/productsContext';
 
-function App() {
+function App({data}) {
 
   return (
     <Router>
@@ -14,8 +14,8 @@ function App() {
       <Navbar/>
       <Routes>
         <Route path='/' element={<ProductList />}/>
-        <Route path='/cart' element={<Cart />}/>
-        <Route path='favorite' element={<Favorite />}/>
+        <Route path='/cart' element={<Cart data={data}/>}/>
+        <Route path='/favorite' element={<Favorite />}/>
       </Routes>
       </ProductsProvider>
     </Router>
