@@ -1,24 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { ShoppingCart, Star } from 'phosphor-react'
 import "./Navbar.scss"
-import { Cart } from './../pages/cart/Cart'
 
-export const Navbar = () => {
+export const Navbar = ({cart, favorite}) => {
 
   return (
     <div className='navbar'>
         <div className='links'>
             <Link to="/"> Brands Outlet </Link>
             <div className='navbar-icons'>
-            <Link to="/favorite">
+            <Link to="/favorite" className='favorite-link'>
                 <Star size={25}/>
+                <div className='favorite-length'>{favorite.length}</div>
             </Link>
-            <Link to="/cart">
-              <div>
+            <Link to="/cart" className='cart-link'>
                 <ShoppingCart size={25}/>
-                </div>
-
+                <div className='cart-length'>{cart.length}</div>
             </Link>
             </div>
 

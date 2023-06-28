@@ -20,7 +20,7 @@ export default function ProductCard({product, setFav, isFavorite, addToCart}) {
   const handleClickOutside = () => {
     setModalOpen(false);
   };
-
+  
   return (
     <div className="card">
       <div className="card-header"></div>
@@ -45,14 +45,13 @@ export default function ProductCard({product, setFav, isFavorite, addToCart}) {
                 closeModal={handleCloseModal}
                 actions={
                   <>
-                    <button
-                      href="/"
+                    <a href="/"
                       className="confirmBtn"
                       id={product.id}
                       onClick={addToCart}
                     >
                       Add
-                    </button>
+                    </a>
                     <button
                       href="/"
                       className="cancelBtn"

@@ -24,7 +24,27 @@ body{
 }
 
 .navbar-icons{
-    width: 60px;
+    width: 100px;
     display: flex;
     justify-content: space-between;
+
 }
+
+.cart-link{
+  width: 130px;
+  display: flex;
+}
+
+.cart-length{
+  font-size: 16px;
+}
+
+.favorite-link{
+  width: 130px;
+  display: flex;
+}
+
+.favorite-length{
+  font-size: 16px;
+}
+

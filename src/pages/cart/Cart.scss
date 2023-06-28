@@ -1,16 +1,26 @@
 .card-header{
+  margin-top: 0;
+  margin-bottom: 20px;
+  background-color: #929191;
   position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  border-radius: 5px;
 }
+
 
 .closeBtn {
     cursor: pointer;
     position: absolute;
-    top: -30px;
+    top: 0px;
     right: 15px;
     width: 26px;
     height: 2px;
     background-color: #000;
     transform: rotate(45deg);
+    z-index: 1;
   
     &::after {
       content: "";
@@ -24,3 +34,7 @@
       transform: rotate(-90deg);
     }
   }
+
+.empty-cart{
+  font-size: 26px;
+}

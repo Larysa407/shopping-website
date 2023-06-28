@@ -1,15 +1,15 @@
-import React, { useState, useEffect} from "react";
+import React from "react";
 import ProductCard from "../../components/ProductList";
 import "../../components/ProductCard.scss";
 
 
-export const Favorite = () => {
-  const data = JSON.parse(localStorage.getItem("favItems"))
+export const Favorite = ({favorite}) => {
 
+  console.log(favorite)
   return (
     <>
     <div className='product-list'>
-    {data==="null" && data.map(element => 
+    {favorite.length !== 0 ? (favorite.map(element => 
     <div className="card" key={element.id}>
     <div className="card-header">
     <img className="card-img" src={element.image} alt="image of product" />
@@ -23,7 +23,7 @@ export const Favorite = () => {
       </div>
     </div>
     </div>
-    )}
+    )) : (<p className='empty-cart'>No favorite items</p>) }
      </div>
   </>
   )
