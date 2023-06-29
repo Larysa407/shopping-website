@@ -1,13 +1,23 @@
-import React, { useState, useEffect } from "react";
-import ProductList from "./ProductList";
+import React, { useState } from "react";
 import "./ProductCard.scss";
 import Button from "./Button";
 import Modal from "./Modal";
 import { Star } from "phosphor-react";
 
+export default function ProductCard({
+  product,
+  addToFav,
+  addToCart,
+}) {
+  const [modalOpen, setModalOpen] = useState(false);
 
-export default function ProductCard({product, setFav, isFavorite, addToCart}) {
-  const [modalOpen, setModalOpen] = useState(false); 
+  const [isFavorite, setIsFavorite] = useState(false)
+
+  const handleFav = () => {
+    setIsFavorite(true);
+    addToFav(product.id)
+    console.log(product.id)
+  }
 
   const handleClick = () => {
     setModalOpen(true);
@@ -20,7 +30,7 @@ export default function ProductCard({product, setFav, isFavorite, addToCart}) {
   const handleClickOutside = () => {
     setModalOpen(false);
   };
-  
+
   return (
     <div className="card">
       <div className="card-header"></div>
@@ -34,8 +44,8 @@ export default function ProductCard({product, setFav, isFavorite, addToCart}) {
             <Star
               size={20}
               id={product.id}
-              onClick={setFav}
-              weight={product.isFavorite ? "fill" : "light"}
+              onClick={handleFav}
+              weight={isFavorite ? "fill" : "light"}
             />
             <Button text="Add to cart" onClick={handleClick} />
             {modalOpen && (
@@ -45,13 +55,14 @@ export default function ProductCard({product, setFav, isFavorite, addToCart}) {
                 closeModal={handleCloseModal}
                 actions={
                   <>
-                    <a href="/"
+                    <button
+                      href="/"
                       className="confirmBtn"
                       id={product.id}
                       onClick={addToCart}
                     >
                       Add
-                    </a>
+                    </button>
                     <button
                       href="/"
                       className="cancelBtn"

@@ -1,20 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ProductCard from "./ProductCard";
-import { Favorite } from "../pages/favorite/Favorite";
 
-export default function ProductList({products, isFavorite, setFav, addToCart, onDelete}) {
+export default function ProductList({products, addToFav, addToCart}) {
 
- 
   return (
     <div className="product-list">
       {products.map((product) => (
         <ProductCard
           product={product}
           key={product.id}
-          setFav={setFav}
+          addToFav={addToFav}
           addToCart={addToCart}
-          onDelete={onDelete}
-          isFavorite={product.isFavorite}
         />
       ))}
     </div>

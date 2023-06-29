@@ -7,7 +7,7 @@ export const Cart = ({cart, onDelete}) => {
 
   return (
     <>
-    <div className='product-list'>
+    <div className='cart-list'>
     {cart.length !== 0 ? (cart.map(cartItem => 
       <CartShow
       cartItem={cartItem}
