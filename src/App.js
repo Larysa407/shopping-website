@@ -40,11 +40,11 @@ function App() {
     localStorage.setItem("favItems", JSON.stringify(deleteData));
   };
 
-  const addToCart = (e) => {
-    const data = products.find((element) => element.id == e.currentTarget.id);
-    const updatedData = [data, ...cart];
-    setCart(updatedData);
-    localStorage.setItem("cartItems", JSON.stringify([data, ...cart]));
+  const addToCart = (id) => {
+      const data = products.find((element) => element.id === id);
+      const updatedData = [data, ...cart];
+      setCart(updatedData);
+      localStorage.setItem("cartItems", JSON.stringify([data, ...cart]));
   };
 
   const deleteFromCart = (id) => {

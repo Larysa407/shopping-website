@@ -8,7 +8,7 @@ export default function ProductCard({
   product,
   addToFav,
   addToCart,
-  removeFromFav
+  removeFromFav,
 }) {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -18,17 +18,20 @@ export default function ProductCard({
   const storageKey = `isFavorite_${product.title}`;
 
   const handleFav = () => {
-    const newFav = !isFavorite
-    if(newFav){
+    const newFav = !isFavorite;
+    if (newFav) {
       setIsFavorite(true);
-      addToFav(product.id)
+      addToFav(product.id);
     } else {
-      setIsFavorite(!isFavorite)
-      removeFromFav(product.id)
+      setIsFavorite(!isFavorite);
+      removeFromFav(product.id);
     }
     localStorage.setItem(storageKey, JSON.stringify(newFav));
-    console.log(product.id)
-  }
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product.id);
+  };
 
   const handleClick = () => {
     setModalOpen(true);
@@ -70,7 +73,7 @@ export default function ProductCard({
                       href="/"
                       className="confirmBtn"
                       id={product.id}
-                      onClick={addToCart}
+                      onClick={handleAddToCart}
                     >
                       Add
                     </button>
