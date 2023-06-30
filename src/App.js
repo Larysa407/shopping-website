@@ -16,6 +16,7 @@ function App() {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cartItems")) || []
   );
+  
 
   useEffect(() => {
     fetch("products.json")
@@ -27,18 +28,18 @@ function App() {
 
   const addToFav = (id) => {
     const data = products.find((element) => element.id === id);
-    console.log(data)
     const updatedData = [data, ...favorite];
     setFavorite(updatedData);
     localStorage.setItem("favItems", JSON.stringify([data, ...favorite]));
+  };
 
+  const removeFromFav = (id) => {
     const deleteData = favorite.filter((item) => {
       return item.id !== id;
     });
-    setCart(deleteData);
-    localStorage.setItem("cartItems", JSON.stringify(deleteData));
-
-  }
+    setFavorite(deleteData);
+    localStorage.setItem("favItems", JSON.stringify(deleteData));
+  };
 
   const addToCart = (e) => {
     const data = products.find((element) => element.id == e.currentTarget.id);
@@ -67,17 +68,14 @@ function App() {
               products={products}
               addToFav={addToFav}
               addToCart={addToCart}
+              removeFromFav={removeFromFav}
             />
           }
         />
         <Route
           path="/cart"
           element={
-            <Cart
-              cart={cart}
-              products={products}
-              onDelete={deleteFromCart}
-            />
+            <Cart cart={cart} products={products} onDelete={deleteFromCart} />
           }
         />
         <Route path="/favorite" element={<Favorite favorite={favorite} />} />

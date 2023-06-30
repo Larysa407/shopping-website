@@ -1,8 +1,12 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 
-export default function ProductList({products, addToFav, addToCart}) {
-
+export default function ProductList({
+  products,
+  addToFav,
+  addToCart,
+  removeFromFav,
+}) {
   return (
     <div className="product-list">
       {products.map((product) => (
@@ -11,6 +15,7 @@ export default function ProductList({products, addToFav, addToCart}) {
           key={product.id}
           addToFav={addToFav}
           addToCart={addToCart}
+          removeFromFav={removeFromFav}
         />
       ))}
     </div>

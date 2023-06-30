@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductCard.scss";
 import Button from "./Button";
 import Modal from "./Modal";
@@ -8,14 +8,28 @@ export default function ProductCard({
   product,
   addToFav,
   addToCart,
+  removeFromFav
 }) {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [isFavorite, setIsFavorite] = useState(JSON.parse(localStorage.getItem("favState")) || false)
+
+  // useEffect(()=>{
+  //   JSON.parse(localStorage.getItem("favItems"))
+  // }, [isFavorite])
 
   const handleFav = () => {
-    setIsFavorite(true);
-    addToFav(product.id)
+    const newFav = !isFavorite
+    if(!isFavorite){
+      setIsFavorite(true);
+      addToFav(product.id)
+      localStorage.setItem("favState", JSON.stringify(newFav))
+    } else {
+      setIsFavorite(!isFavorite)
+      removeFromFav(product.id)
+      localStorage.setItem("favState", JSON.stringify(newFav))
+    }
+
     console.log(product.id)
   }
 
