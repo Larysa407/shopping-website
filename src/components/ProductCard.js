@@ -3,6 +3,7 @@ import "./ProductCard.scss";
 import Button from "./Button";
 import Modal from "./Modal";
 import { Star } from "phosphor-react";
+import PropTypes from "prop-types";
 
 export default function ProductCard({
   product,
@@ -95,3 +96,10 @@ export default function ProductCard({
     </div>
   );
 }
+
+ProductCard.propTypes = {
+  product: PropTypes.object.isRequired,
+  addToCart: PropTypes.func,
+  addToFav: PropTypes.func,
+  removeFromFav: PropTypes.func,
+};
