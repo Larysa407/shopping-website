@@ -12,24 +12,21 @@ export default function ProductCard({
 }) {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const [isFavorite, setIsFavorite] = useState(JSON.parse(localStorage.getItem("favState")) || false)
-
-  // useEffect(()=>{
-  //   JSON.parse(localStorage.getItem("favItems"))
-  // }, [isFavorite])
+  const [isFavorite, setIsFavorite] = useState(
+    JSON.parse(localStorage.getItem(`isFavorite_${product.title}`)) || false
+  );
+  const storageKey = `isFavorite_${product.title}`;
 
   const handleFav = () => {
     const newFav = !isFavorite
-    if(!isFavorite){
+    if(newFav){
       setIsFavorite(true);
       addToFav(product.id)
-      localStorage.setItem("favState", JSON.stringify(newFav))
     } else {
       setIsFavorite(!isFavorite)
       removeFromFav(product.id)
-      localStorage.setItem("favState", JSON.stringify(newFav))
     }
-
+    localStorage.setItem(storageKey, JSON.stringify(newFav));
     console.log(product.id)
   }
 

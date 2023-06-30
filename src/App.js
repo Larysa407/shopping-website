@@ -16,7 +16,6 @@ function App() {
   const [cart, setCart] = useState(
     JSON.parse(localStorage.getItem("cartItems")) || []
   );
-  
 
   useEffect(() => {
     fetch("products.json")
@@ -30,7 +29,7 @@ function App() {
     const data = products.find((element) => element.id === id);
     const updatedData = [data, ...favorite];
     setFavorite(updatedData);
-    localStorage.setItem("favItems", JSON.stringify([data, ...favorite]));
+    localStorage.setItem("favItems", JSON.stringify(updatedData));
   };
 
   const removeFromFav = (id) => {
