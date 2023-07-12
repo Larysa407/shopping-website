@@ -2,8 +2,8 @@
     {  
         "id": 1,
         "title": "Sneakers Versace",
-        "price": "9350 uah",
-        "image": "./images/sneakers-versace-jeans-couture.jpg",
+        "price": 9350,
+        "image": "./images/sneakers-versace-jeans-couture.avif",
         "vendorCode": 122,
         "color": "Color: black"
     },
@@ -11,7 +11,7 @@
     {   
         "id": 2,
         "title": "Sneakers Ash",
-        "price": "8200 uah",
+        "price": 8200,
         "image": "./images/sneakers-ash.jpg",
         "vendorCode": 223,
         "color": "Color: pink/grey"
@@ -20,7 +20,7 @@
     {
         "id": 3,
         "title": "Sneakers Bikkemberg",
-        "price": "5600 uah",
+        "price": 5600,
         "image": "./images/sneakers-bikkembergs.jpg",
         "vendorCode": 315,
         "color": "Color: black"
@@ -29,7 +29,7 @@
     {
         "id": 4,
         "title": "Sneakers Adidas",
-        "price": "9500 uah",
+        "price": 9500,
         "image": "./images/sneakers-adidas.jpg",
         "vendorCode": 457,
         "color": "Color: black"
@@ -38,7 +38,7 @@
     {
         "id": 5,
         "title": "Bag Valentino",
-        "price": "8750 uah",
+        "price": 8750,
         "image": "./images/bag-valentino.jpg",
         "vendorCode": 537,
         "color": "Color: red"
@@ -47,7 +47,7 @@
     {
         "id": 6,
         "title": "Bag Trussardi",
-        "price": "6500 uah",
+        "price": 6500,
         "image": "./images/bag-trussardi.jpg",
         "vendorCode": 653,
         "color": "Color: beige"
@@ -56,7 +56,7 @@
     {
         "id": 7,
         "title": "Bag Twin-Set",
-        "price": "3650 uah",
+        "price": 3650,
         "image": "./images/bag-twin-set.jpg",
         "vendorCode": 733,
         "color": "Color: black"
@@ -65,7 +65,7 @@
     {
         "id": 8,
         "title": "Bag Armani",
-        "price": "7500 uah",
+        "price": 7500,
         "image": "./images/bag-armani.jpg",
         "vendorCode": 856,
         "color": "Color: white/black"
@@ -74,8 +74,8 @@
     {
         "id": 9,
         "title": "Belt Armani",
-        "price": "1750 uah",
-        "image": "./images/belt-armani.jpg",
+        "price": 1750,
+        "image": "./images/belt-armani.png",
         "vendorCode": 930,
         "color": "Color: blue"
     },
@@ -83,7 +83,7 @@
     {
         "id": 10,
         "title": "Belt Boss",
-        "price": "2100 uah",
+        "price": 2100,
         "image": "./images/belt-boss.jpg",
         "vendorCode": 1012,
         "color": "Color: black"
@@ -92,7 +92,7 @@
     {
         "id": 11,
         "title": "Belt Karl Lagerfeld",
-        "price": "2000 uah",
+        "price": 2000,
         "image": "./images/belt-karl-lagerfeld.jpg",
         "vendorCode": 1132,
         "color": "Color: black"
@@ -101,7 +101,7 @@
     {
         "id": 12,
         "title": "Belt Philipp Plein",
-        "price": "1950 uah",
+        "price": 1950,
         "image": "./images/belt-philipp-plein.jpg",
         "vendorCode": 1242,
         "color": "Color: black"

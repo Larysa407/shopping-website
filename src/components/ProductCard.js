@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./ProductCard.scss";
 import Button from "./Button";
 import Modal from "./Modal";
@@ -16,7 +16,8 @@ export default function ProductCard({
   const [isFavorite, setIsFavorite] = useState(
     JSON.parse(localStorage.getItem(`isFavorite_${product.title}`)) || false
   );
-  const storageKey = `isFavorite_${product.title}`;
+
+  const [disabled, setDisabled] = useState(false);
 
   const handleFav = () => {
     const newFav = !isFavorite;
@@ -27,7 +28,7 @@ export default function ProductCard({
       setIsFavorite(!isFavorite);
       removeFromFav(product.id);
     }
-    localStorage.setItem(storageKey, JSON.stringify(newFav));
+    localStorage.setItem(`isFavorite_${product.title}`, JSON.stringify(newFav));
   };
 
   const handleAddToCart = () => {
@@ -36,6 +37,7 @@ export default function ProductCard({
 
   const handleClick = () => {
     setModalOpen(true);
+    setDisabled(true);
   };
 
   const handleCloseModal = () => {
@@ -48,24 +50,25 @@ export default function ProductCard({
 
   return (
     <div className="card">
-      <div className="card-header"></div>
-      <img className="card-img" src={product.image} alt="image of product" />
+      <div className="card-header">
+        <img className="card-img" src={product.image} alt="image of product" />
+        <Star
+          className="card-fav_item"
+          size={20}
+          onClick={handleFav}
+          weight={isFavorite ? "fill" : "light"}
+        />
+      </div>
       <div className="card-body">
         <h3 className="card-title">{product.title}</h3>
         <p className="card-text">{product.color}</p>
         <div className="card-footer">
-          <h4 className="card-text">{product.price}</h4>
+          <h4 className="card-text">{product.price} uah</h4>
           <div className="card-footer-icons">
-            <Star
-              size={20}
-              id={product.id}
-              onClick={handleFav}
-              weight={isFavorite ? "fill" : "light"}
-            />
-            <Button text="Add to cart" onClick={handleClick} />
+            <Button text="To cart" disabled={disabled} onClick={handleClick} />
             {modalOpen && (
               <Modal
-                text="Add this product to cart?"
+                text="Add this product to the cart?"
                 closeButton={true}
                 closeModal={handleCloseModal}
                 actions={

@@ -1,10 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar } from "./components/Navbar";
+import { useEffect, useState } from "react";
+import { Header } from "./components/Header";
 import { Cart } from "./pages/cart/Cart";
 import { Favorite } from "./pages/favorite/Favorite";
 import ProductList from "./components/ProductList";
-import { useEffect, useState } from "react";
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -58,7 +59,7 @@ function App() {
   console.log(cart);
   return (
     <Router>
-      <Navbar cart={cart} favorite={favorite} />
+      <Header cart={cart} favorite={favorite} />
       <Routes>
         <Route
           path="/"
