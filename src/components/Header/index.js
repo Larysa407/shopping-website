@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, Star } from "phosphor-react";
-import "./Header.scss";
+import "./style.scss";
 
 export const Header = ({ cart, favorite }) => {
   return (

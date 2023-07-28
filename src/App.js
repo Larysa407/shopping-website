@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Header } from "./components/Header";
+import { Header } from "./components/Header/index";
 import { Cart } from "./pages/cart/Cart";
 import { Favorite } from "./pages/favorite/Favorite";
-import ProductList from "./components/ProductList";
+import ProductList from "./components/ProductList/index";
 
 
 function App() {

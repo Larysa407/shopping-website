@@ -36,7 +36,7 @@ export const CartShow = ({ cartItem, onDelete }) => {
           <h3 className="cart-title">{cartItem.title}</h3>
           <p className="cart-text">{cartItem.color}</p>
           <div className="cart-footer">
-            <h4 className="cart-text">{cartItem.price}</h4>
+            <h4 className="cart-text">{cartItem.price} uah</h4>
           </div>
         </div>
         {modalOpen && (

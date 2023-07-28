@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./ProductCard.scss";
-import Button from "./Button";
-import Modal from "./Modal";
+import "./style.scss";
+import Button from "../Button/index";
+import Modal from "../Modal/index";
 import { Star } from "phosphor-react";
 import PropTypes from "prop-types";
 

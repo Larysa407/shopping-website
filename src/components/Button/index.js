@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Button.scss"
+import "./style.scss"
 
 export default function Button({backgroundColor, text, onClick, disabled}) {
   return (

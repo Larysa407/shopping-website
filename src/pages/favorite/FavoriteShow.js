@@ -17,7 +17,7 @@ export const FavoriteShow = ({favoriteItem}) => {
       <h3 className="card-title">{favoriteItem.title}</h3>
       <p className="card-text">{favoriteItem.color}</p>
       <div className="card-footer">
-        <h4 className="card-text">{favoriteItem.price}</h4>
+        <h4 className="card-text">{favoriteItem.price} uah</h4>
       </div>
     </div>
     </div>
