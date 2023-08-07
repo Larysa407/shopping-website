@@ -6,7 +6,6 @@ import { Cart } from "./pages/cart/Cart";
 import { Favorite } from "./pages/favorite/Favorite";
 import ProductList from "./components/ProductList/index";
 
-
 function App() {
   const [products, setProducts] = useState([]);
 
@@ -42,10 +41,10 @@ function App() {
   };
 
   const addToCart = (id) => {
-      const data = products.find((element) => element.id === id);
-      const updatedData = [data, ...cart];
-      setCart(updatedData);
-      localStorage.setItem("cartItems", JSON.stringify([data, ...cart]));
+    const data = products.find((element) => element.id === id);
+    const updatedData = [data, ...cart];
+    setCart(updatedData);
+    localStorage.setItem("cartItems", JSON.stringify([data, ...cart]));
   };
 
   const deleteFromCart = (id) => {

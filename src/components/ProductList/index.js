@@ -6,7 +6,7 @@ export default function ProductList({
   products,
   addToFav,
   addToCart,
-  removeFromFav
+  removeFromFav,
 }) {
   return (
     <div className="product-list">
@@ -33,8 +33,3 @@ ProductList.propTypes = {
   addToCart: PropTypes.func,
   removeFromFav: PropTypes.func,
 };
-
-
-
-
-

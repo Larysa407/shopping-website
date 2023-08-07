@@ -1,5 +1,6 @@
 import React from "react";
-import "./style.scss"
+import "./style.scss";
+import PropTypes from "prop-types";
 
 export default function Modal({
   header,
@@ -24,3 +25,12 @@ export default function Modal({
     </div>
   );
 }
+
+Modal.propTypes = {
+  header: PropTypes.string,
+  text: PropTypes.string,
+};
+
+Modal.defaultProps = {
+  text: "Sorry, something goes wrong...",
+};

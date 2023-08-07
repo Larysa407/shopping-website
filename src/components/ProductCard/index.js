@@ -38,8 +38,8 @@ export default function ProductCard({
   };
 
   const handleAddToCart = () => {
-    const newCart = !isCart
-    if(newCart){
+    const newCart = !isCart;
+    if (newCart) {
       addToCart(id);
       setIsCart(true);
       localStorage.setItem(`isCartItem_${title}`, JSON.stringify(newCart));
@@ -73,7 +73,7 @@ export default function ProductCard({
         <h3 className="card-title">{title}</h3>
         <p className="card-text">{color}</p>
         <div className="card-footer">
-          <h4 className="card-text"> uah</h4>
+          <h4 className="card-text"> {price} uah</h4>
           <div className="card-footer-icons">
             <Button text="To cart" onClick={handleClick} />
             {modalOpen && (
@@ -122,6 +122,5 @@ ProductCard.propTypes = {
 ProductCard.defaultProps = {
   title: "Product",
   color: "None",
-  price: 0
+  price: 0,
 };
-
