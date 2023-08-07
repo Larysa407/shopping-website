@@ -6,7 +6,11 @@ import { Star } from "phosphor-react";
 import PropTypes from "prop-types";
 
 export default function ProductCard({
-  product,
+  title,
+  price,
+  color,
+  image,
+  id,
   addToFav,
   addToCart,
   removeFromFav,
@@ -14,30 +18,36 @@ export default function ProductCard({
   const [modalOpen, setModalOpen] = useState(false);
 
   const [isFavorite, setIsFavorite] = useState(
-    JSON.parse(localStorage.getItem(`isFavorite_${product.title}`)) || false
+    JSON.parse(localStorage.getItem(`isFavorite_${title}`)) || false
   );
 
-  const [disabled, setDisabled] = useState(false);
+  const [isCart, setIsCart] = useState(
+    JSON.parse(localStorage.getItem(`isCartItem_${title}`)) || false
+  );
 
   const handleFav = () => {
     const newFav = !isFavorite;
     if (newFav) {
       setIsFavorite(true);
-      addToFav(product.id);
+      addToFav(id);
     } else {
       setIsFavorite(!isFavorite);
-      removeFromFav(product.id);
+      removeFromFav(id);
     }
-    localStorage.setItem(`isFavorite_${product.title}`, JSON.stringify(newFav));
+    localStorage.setItem(`isFavorite_${title}`, JSON.stringify(newFav));
   };
 
   const handleAddToCart = () => {
-    addToCart(product.id);
+    const newCart = !isCart
+    if(newCart){
+      addToCart(id);
+      setIsCart(true);
+      localStorage.setItem(`isCartItem_${title}`, JSON.stringify(newCart));
+    }
   };
 
   const handleClick = () => {
     setModalOpen(true);
-    setDisabled(true);
   };
 
   const handleCloseModal = () => {
@@ -51,7 +61,7 @@ export default function ProductCard({
   return (
     <div className="card">
       <div className="card-header">
-        <img className="card-img" src={product.image} alt="image of product" />
+        <img className="card-img" src={image} alt="image of product" />
         <Star
           className="card-fav_item"
           size={20}
@@ -60,12 +70,12 @@ export default function ProductCard({
         />
       </div>
       <div className="card-body">
-        <h3 className="card-title">{product.title}</h3>
-        <p className="card-text">{product.color}</p>
+        <h3 className="card-title">{title}</h3>
+        <p className="card-text">{color}</p>
         <div className="card-footer">
-          <h4 className="card-text">{product.price} uah</h4>
+          <h4 className="card-text"> uah</h4>
           <div className="card-footer-icons">
-            <Button text="To cart" disabled={disabled} onClick={handleClick} />
+            <Button text="To cart" onClick={handleClick} />
             {modalOpen && (
               <Modal
                 text="Add this product to the cart?"
@@ -76,7 +86,7 @@ export default function ProductCard({
                     <button
                       href="/"
                       className="confirmBtn"
-                      id={product.id}
+                      id={id}
                       onClick={handleAddToCart}
                     >
                       Add
@@ -101,8 +111,17 @@ export default function ProductCard({
 }
 
 ProductCard.propTypes = {
-  product: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
   addToCart: PropTypes.func,
   addToFav: PropTypes.func,
   removeFromFav: PropTypes.func,
 };
+
+ProductCard.defaultProps = {
+  title: "Product",
+  color: "None",
+  price: 0
+};
+

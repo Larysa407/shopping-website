@@ -56,7 +56,6 @@ function App() {
     localStorage.setItem("cartItems", JSON.stringify(updatedData));
   };
 
-  console.log(cart);
   return (
     <Router>
       <Header cart={cart} favorite={favorite} />

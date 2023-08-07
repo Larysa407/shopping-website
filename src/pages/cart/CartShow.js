@@ -5,8 +5,17 @@ import "./Cart.scss";
 export const CartShow = ({ cartItem, onDelete }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
+  const [isCart, setIsCart] = useState(
+    JSON.parse(localStorage.getItem(`isCartItem_${cartItem.title}`)) || false
+  );
+
   const handleClickDelete = () => {
-    onDelete(cartItem.id);
+    const newCart = !isCart
+    if(!newCart){
+      onDelete(cartItem.id);
+      setIsCart(false);
+      localStorage.setItem(`isCartItem_${cartItem.title}`, JSON.stringify(newCart));
+    }
   };
 
   const handleClick = () => {
