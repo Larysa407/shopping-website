@@ -4,58 +4,58 @@ import Button from "../Button/index";
 import Modal from "../Modal/index";
 import { Star } from "phosphor-react";
 import PropTypes from "prop-types";
-
-export default function ProductCard({
-  title,
-  price,
-  color,
-  image,
-  id,
-  addToFav,
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToFavorites,
+  removeFromFavorites,
   addToCart,
-  removeFromFav,
-}) {
-  const [modalOpen, setModalOpen] = useState(false);
+  openModal,
+  closeModal,
+} from "../../redux/actions/index";
 
-  const [isFavorite, setIsFavorite] = useState(
-    JSON.parse(localStorage.getItem(`isFavorite_${title}`)) || false
+export default function ProductCard({ title, price, color, image, id, index}) {
+  const dispatch = useDispatch();
+
+  const modal = useSelector((state) => state.modal === index);
+
+  const favorite = useSelector((state) => state.favorite);
+  const isFavorite = favorite.some(
+    (item) => item.title === title && item.price === price
   );
 
-  const [isCart, setIsCart] = useState(
-    JSON.parse(localStorage.getItem(`isCartItem_${title}`)) || false
+  const cart = useSelector((state) => state.cart);
+  const isCart = cart.some(
+    (item) => item.title === title && item.price === price
   );
 
   const handleFav = () => {
-    const newFav = !isFavorite;
-    if (newFav) {
-      setIsFavorite(true);
-      addToFav(id);
+    if (isFavorite) {
+      const itemToRemove = favorite.findIndex(
+        (item) => item.title === title && item.price === price
+      );
+      dispatch(removeFromFavorites(itemToRemove));
     } else {
-      setIsFavorite(!isFavorite);
-      removeFromFav(id);
+      dispatch(addToFavorites(title, price, image, color));
     }
-    localStorage.setItem(`isFavorite_${title}`, JSON.stringify(newFav));
   };
 
   const handleAddToCart = () => {
-    const newCart = !isCart;
-    if (newCart) {
-      addToCart(id);
-      setIsCart(true);
-      localStorage.setItem(`isCartItem_${title}`, JSON.stringify(newCart));
+    if (!isCart) {
+      dispatch(addToCart(title, price, image, color));
+      // localStorage.setItem(`isCartItem_${title}`, JSON.stringify(newCart));
     }
   };
 
   const handleClick = () => {
-    setModalOpen(true);
+    dispatch(openModal(index));
   };
 
   const handleCloseModal = () => {
-    setModalOpen(false);
+    dispatch(closeModal());
   };
 
   const handleClickOutside = () => {
-    setModalOpen(false);
+    dispatch(closeModal());
   };
 
   return (
@@ -76,7 +76,7 @@ export default function ProductCard({
           <h4 className="card-text"> {price} uah</h4>
           <div className="card-footer-icons">
             <Button text="To cart" onClick={handleClick} />
-            {modalOpen && (
+            {modal && (
               <Modal
                 text="Add this product to the cart?"
                 closeButton={true}

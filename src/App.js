@@ -5,30 +5,35 @@ import { Header } from "./components/Header/index";
 import { Cart } from "./pages/cart/Cart";
 import { Favorite } from "./pages/favorite/Favorite";
 import ProductList from "./components/ProductList/index";
+import { useSelector, useDispatch } from "react-redux";
+import { setData, addToFavorites, removeFromFavorites, addToCart, removeFromCart } from "./redux/actions/index"
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch()
+  const products = useSelector(state => state.products)
 
-  const [favorite, setFavorite] = useState(
-    JSON.parse(localStorage.getItem("favItems")) || []
-  );
+  const favorite = useSelector(state => state.favorite)
+  // const [favorite, setFavorite] = useState(
+  //   JSON.parse(localStorage.getItem("favItems")) || []
+  // );
 
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cartItems")) || []
-  );
+  const cart = useSelector(state => state.cart)
+  // const [cart, setCart] = useState(
+  //   JSON.parse(localStorage.getItem("cartItems")) || []
+  // );
 
   useEffect(() => {
     fetch("products.json")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
+        dispatch(setData(data));
       });
   }, []);
 
   const addToFav = (id) => {
     const data = products.find((element) => element.id === id);
     const updatedData = [data, ...favorite];
-    setFavorite(updatedData);
+    dispatch(addToFavorites(updatedData));
     localStorage.setItem("favItems", JSON.stringify(updatedData));
   };
 
@@ -36,14 +41,14 @@ function App() {
     const deleteData = favorite.filter((item) => {
       return item.id !== id;
     });
-    setFavorite(deleteData);
+    dispatch(removeFromFavorites(deleteData));
     localStorage.setItem("favItems", JSON.stringify(deleteData));
   };
 
   const addToCart = (id) => {
     const data = products.find((element) => element.id === id);
     const updatedData = [data, ...cart];
-    setCart(updatedData);
+    dispatch(addToCart(updatedData))
     localStorage.setItem("cartItems", JSON.stringify([data, ...cart]));
   };
 
@@ -51,19 +56,18 @@ function App() {
     const updatedData = cart.filter((item) => {
       return item.id !== id;
     });
-    setCart(updatedData);
+    dispatch(removeFromCart(updatedData))
     localStorage.setItem("cartItems", JSON.stringify(updatedData));
   };
 
   return (
     <Router>
-      <Header cart={cart} favorite={favorite} />
+      <Header cart={cart} />
       <Routes>
         <Route
           path="/"
           element={
             <ProductList
-              products={products}
               addToFav={addToFav}
               addToCart={addToCart}
               removeFromFav={removeFromFav}
@@ -76,7 +80,7 @@ function App() {
             <Cart cart={cart} products={products} onDelete={deleteFromCart} />
           }
         />
-        <Route path="/favorite" element={<Favorite favorite={favorite} />} />
+        <Route path="/favorite" element={<Favorite />} />
       </Routes>
     </Router>
   );

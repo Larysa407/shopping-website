@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, Star } from "phosphor-react";
 import "./style.scss";
+import { useSelector } from "react-redux";
 
-export const Header = ({ cart, favorite }) => {
+export const Header = ({ cart}) => {
+  const favorite = useSelector((state) => state.favorite);
   return (
     <div className="header">
       <div className="links">
