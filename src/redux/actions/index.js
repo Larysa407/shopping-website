@@ -8,37 +8,33 @@ import {
     MODAL_CLOSE,
   } from "../type/index";
   
-  export const addToCart = (title, price, image, color) => {
+  export const addToCart = (item) => {
     return {
       type: ADD_TO_CART,
-      payload: {
-        title,
-        price,
-        image,
-        color,
-      },
+      payload: item
     };
   };
   
-  export const addToFavorites = (title, price, image, color) => ({
+  export const addToFavorites = (id, title, price, image, color) => ({
     type: ADD_TO_FAVORITES,
     payload: {
+      id,
       title,
       price,
       image,
-      color,
+      color
     },
   });
   
-  export const removeFromCart = (index) => ({
+  export const removeFromCart = (id) => ({
     type: REMOVE_FROM_CART,
-    payload: index,
+    payload: id,
   });
   
-  export const removeFromFavorites = (index) => {
+  export const removeFromFavorites = (id) => {
     return {
       type: REMOVE_FROM_FAVORITES,
-      payload: index,
+      payload: id,
     };
   };
   
@@ -47,9 +43,9 @@ import {
     payload: dataList,
   });
   
-  export const openModal = (index) => ({
+  export const openModal = () => ({
     type: MODAL_OPEN,
-    payload: index
+    payload: true
   });
   
   export const closeModal = () => ({

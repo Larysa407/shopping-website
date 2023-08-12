@@ -13,10 +13,10 @@ import {
   closeModal,
 } from "../../redux/actions/index";
 
-export default function ProductCard({ title, price, color, image, id, index}) {
+export default function ProductCard({ title, price, color, image, id}) {
   const dispatch = useDispatch();
 
-  const modal = useSelector((state) => state.modal === index);
+  const modal = useSelector((state) => state.modal);
 
   const favorite = useSelector((state) => state.favorite);
   const isFavorite = favorite.some(
@@ -35,19 +35,21 @@ export default function ProductCard({ title, price, color, image, id, index}) {
       );
       dispatch(removeFromFavorites(itemToRemove));
     } else {
-      dispatch(addToFavorites(title, price, image, color));
+      dispatch(addToFavorites(id, title, price, image, color));
     }
   };
 
   const handleAddToCart = () => {
     if (!isCart) {
-      dispatch(addToCart(title, price, image, color));
-      // localStorage.setItem(`isCartItem_${title}`, JSON.stringify(newCart));
+      const itemToAdd = cart.findIndex(
+        (item) => item.title === title && item.price === price
+      );
+      dispatch(addToCart(itemToAdd));
     }
   };
 
   const handleClick = () => {
-    dispatch(openModal(index));
+    dispatch(openModal());
   };
 
   const handleCloseModal = () => {

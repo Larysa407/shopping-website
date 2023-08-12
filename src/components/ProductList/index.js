@@ -7,14 +7,14 @@ export default function ProductList() {
   const products = useSelector((state) => state.products);
   return (
     <div className="product-list">
-      {products.map((product, index) => (
+      {products.map((product) => (
         <ProductCard
           title={product.title}
           color={product.color}
           price={product.price}
           image={product.image}
           id={product.id}
-          key={index}
+          key={product.id}
         />
       ))}
     </div>

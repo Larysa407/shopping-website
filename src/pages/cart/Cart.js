@@ -1,11 +1,11 @@
 import React from "react";
-import "./Cart.scss";
 import { CartShow } from "./CartShow";
+import { useSelector } from "react-redux";
 
-export const Cart = ({ cart, onDelete }) => {
+export const Cart = () => {
+  const cart = useSelector((state) => state.cart);
   return (
-    <>
-      <div className="cart-list">
+      <div className="product-list">
         {cart.length !== 0 ? (
           cart.map((cartItem) => (
             <CartShow
@@ -15,13 +15,11 @@ export const Cart = ({ cart, onDelete }) => {
               color={cartItem.color}
               id={cartItem.id}
               key={cartItem.id}
-              onDelete={onDelete}
             />
           ))
         ) : (
           <p className="empty-cart">The cart is empty</p>
         )}
       </div>
-    </>
   );
 };

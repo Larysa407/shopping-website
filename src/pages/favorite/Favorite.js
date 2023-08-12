@@ -1,7 +1,9 @@
 import React from "react";
 import { FavoriteShow } from "./FavoriteShow";
+import { useSelector } from "react-redux";
 
-export const Favorite = ({ favorite }) => {
+export const Favorite = () => {
+  const favorite = useSelector((state) => state.favorite);
   return (
     <div className="product-list">
       {favorite.length !== 0 ? (

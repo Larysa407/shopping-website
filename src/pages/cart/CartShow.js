@@ -2,77 +2,82 @@ import React, { useState } from "react";
 import Modal from "../../components/Modal";
 import "./Cart.scss";
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  openModal,
+  closeModal,
+  removeFromCart,
+} from "../../redux/actions/index";
 
-export const CartShow = ({ title, color, image, price, id, onDelete }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+export const CartShow = ({ title, color, image, price, id }) => {
+  const dispatch = useDispatch();
 
-  const [isCart, setIsCart] = useState(
-    JSON.parse(localStorage.getItem(`isCartItem_${title}`)) || false
+  const modal = useSelector((state) => state.modal);
+
+  const cart = useSelector((state) => state.cart);
+  const isCart = cart.some(
+    (item) => item.title === title && item.price === price
   );
+    console.log(isCart)
+  const handleClickDelete = (id) => {
+    if (isCart) {
+      const itemToRemove = cart.findIndex(
+        (item) => item.title === title && item.price === price
+      );
 
-  const handleClickDelete = () => {
-    const newCart = !isCart;
-    if (!newCart) {
-      onDelete(id);
-      setIsCart(false);
-      localStorage.setItem(`isCartItem_${title}`, JSON.stringify(newCart));
+      console.log(itemToRemove);
+      dispatch(removeFromCart(itemToRemove));
     }
   };
 
   const handleClick = () => {
-    setModalOpen(true);
+    dispatch(openModal());
   };
 
   const handleCloseModal = () => {
-    setModalOpen(false);
+    dispatch(closeModal());
   };
 
   const handleClickOutside = () => {
-    setModalOpen(false);
+    dispatch(closeModal());
   };
 
   return (
-    <>
-      <div className="cart">
-        <div className="cart-header">
-          <span className="cart-close-btn" onClick={handleClick}></span>
-          <img className="cart-img" src={image} alt="image of product" />
-        </div>
-        <div className="cart-body">
-          <h3 className="cart-title">{title}</h3>
-          <p className="cart-text">{color}</p>
-          <div className="cart-footer">
-            <h4 className="cart-text">{price} uah</h4>
-          </div>
-        </div>
-        {modalOpen && (
-          <Modal
-            text="Do you want to remove this item from cart?"
-            closeButton={true}
-            closeModal={handleCloseModal}
-            actions={
-              <>
-                <button
-                  href="/"
-                  className="confirmBtn"
-                  onClick={handleClickDelete}
-                >
-                  Remove
-                </button>
-                <button
-                  href="/"
-                  className="cancelBtn"
-                  onClick={handleCloseModal}
-                >
-                  Cancel
-                </button>
-              </>
-            }
-            clickOutside={handleClickOutside}
-          />
-        )}
+    <div className="card">
+      <div className="cart-header">
+        <span className="cart-close-btn" onClick={handleClick}></span>
+        <img className="cart-img" src={image} alt="image of product" />
       </div>
-    </>
+      <div className="card-body">
+        <h3 className="card-title">{title}</h3>
+        <p className="card-text">{color}</p>
+        <div className="card-footer">
+          <h4 className="card-text">{price} uah</h4>
+        </div>
+      </div>
+      {modal && (
+        <Modal
+          text="Do you want to remove this item from cart?"
+          closeButton={true}
+          closeModal={handleCloseModal}
+          actions={
+            <>
+              <button
+                href="/"
+                className="confirmBtn"
+                onClick={handleClickDelete}
+              >
+                Remove
+              </button>
+              <button href="/" className="cancelBtn" onClick={handleCloseModal}>
+                Cancel
+              </button>
+            </>
+          }
+          clickOutside={handleClickOutside}
+        />
+      )}
+    </div>
   );
 };
 
