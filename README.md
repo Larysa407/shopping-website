@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # react-hw-3
+=======
+# react-hw-4
+>>>>>>> c75c0022f19175d830731e8b237aa61406d24d65
 
 
 
@@ -15,14 +19,22 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
+<<<<<<< HEAD
 git remote add origin https://gitlab.com/Larysa_Semerikova/react-hw-3.git
+=======
+git remote add origin https://gitlab.com/Larysa_Semerikova/react-hw-4.git
+>>>>>>> c75c0022f19175d830731e8b237aa61406d24d65
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
+<<<<<<< HEAD
 - [ ] [Set up project integrations](https://gitlab.com/Larysa_Semerikova/react-hw-3/-/settings/integrations)
+=======
+- [ ] [Set up project integrations](https://gitlab.com/Larysa_Semerikova/react-hw-4/-/settings/integrations)
+>>>>>>> c75c0022f19175d830731e8b237aa61406d24d65
 
 ## Collaborate with your team
 
