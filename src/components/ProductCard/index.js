@@ -16,6 +16,8 @@ import {
 export default function ProductCard({ title, price, color, image, id, index}) {
   const dispatch = useDispatch();
 
+  const products = useSelector((state) => state.products);
+
   const modal = useSelector((state) => state.modal);
 
   const favorite = useSelector((state) => state.favorite);
@@ -39,15 +41,16 @@ export default function ProductCard({ title, price, color, image, id, index}) {
     }
   };
 
-  const handleAddToCart = () => {
-    // if (!isCart) {
-      dispatch(addToCart(id, title, price, image, color));
-      dispatch(closeModal());
-    // }
+  const handleClick = () => {
+    const itemToCart = products.find(
+      (item) => item.title === title && item.price === price
+    );
+    dispatch(addToCart(itemToCart));
+    dispatch(openModal());
   };
 
-  const handleClick = () => {
-    dispatch(openModal());
+  const handleAddToCart = () => {
+      dispatch(closeModal());
   };
 
   const handleCloseModal = () => {

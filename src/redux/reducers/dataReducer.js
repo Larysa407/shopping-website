@@ -1,4 +1,4 @@
-import { SET_DATA } from "../type/index";
+import { SET_DATA, ADD_TO_CART } from "../type/index";
 
 const defaultState = []
 

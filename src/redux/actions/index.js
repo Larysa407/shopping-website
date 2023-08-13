@@ -8,15 +8,9 @@ import {
     MODAL_CLOSE,
   } from "../type/index";
   
-  export const addToCart = (id, title, price, image, color) => ({
+  export const addToCart = (item) => ({
       type: ADD_TO_CART,
-      payload: {
-        id,
-        title,
-        price,
-        image,
-        color
-      },
+      payload: item
   });
   
   export const addToFavorites = (id, title, price, image, color) => ({
