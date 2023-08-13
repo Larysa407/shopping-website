@@ -15,19 +15,12 @@ export const CartShow = ({ title, color, image, price, id }) => {
   const modal = useSelector((state) => state.modal);
 
   const cart = useSelector((state) => state.cart);
-  // const isCart = cart.some(
-  //   (item) => item.title === title && item.price === price
-  // );
  
   const handleClickDelete = (id) => {
-    // if (isCart) {
       const itemToRemove = cart.findIndex(
         (item) => item.title === title && item.price === price
       );
-
-      // console.log(itemToRemove);
       dispatch(removeFromCart(itemToRemove));
-    // }
   };
 
   const handleClick = () => {

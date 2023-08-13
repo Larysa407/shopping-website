@@ -26,9 +26,9 @@ export default function ProductCard({ title, price, color, image, id, index}) {
   );
 
   const cart = useSelector((state) => state.cart);
-  // const isCart = cart.some(
-  //   (item) => item.title === title && item.price === price
-  // );
+  const isCart = cart.some(
+    (item) => item.title === title && item.price === price
+  );
 
   const handleFav = () => {
     if (isFavorite) {
@@ -41,16 +41,18 @@ export default function ProductCard({ title, price, color, image, id, index}) {
     }
   };
 
-  const handleClick = () => {
-    const itemToCart = products.find(
-      (item) => item.title === title && item.price === price
-    );
-    dispatch(addToCart(itemToCart));
-    dispatch(openModal());
-  };
-
   const handleAddToCart = () => {
-      dispatch(closeModal());
+    dispatch(closeModal());
+};
+
+  const handleClick = () => {
+    if(!isCart){
+      const itemToCart = products.find(
+        (item) => item.title === title && item.price === price
+      );
+      dispatch(addToCart(itemToCart));
+      dispatch(openModal());
+    }
   };
 
   const handleCloseModal = () => {
@@ -119,8 +121,8 @@ ProductCard.propTypes = {
   color: PropTypes.string.isRequired,
 };
 
-// ProductCard.defaultProps = {
-//   title: "Product",
-//   color: "None",
-//   price: 0,
-// };
+ProductCard.defaultProps = {
+  title: "Product",
+  color: "None",
+  price: 0,
+};
