@@ -8,12 +8,16 @@ import {
     MODAL_CLOSE,
   } from "../type/index";
   
-  export const addToCart = (item) => {
-    return {
+  export const addToCart = (id, title, price, image, color) => ({
       type: ADD_TO_CART,
-      payload: item
-    };
-  };
+      payload: {
+        id,
+        title,
+        price,
+        image,
+        color
+      },
+  });
   
   export const addToFavorites = (id, title, price, image, color) => ({
     type: ADD_TO_FAVORITES,
@@ -49,6 +53,6 @@ import {
   });
   
   export const closeModal = () => ({
-    type: MODAL_CLOSE,
+    type: MODAL_CLOSE
   });
   

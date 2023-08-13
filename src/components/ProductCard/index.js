@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.scss";
 import Button from "../Button/index";
 import Modal from "../Modal/index";
@@ -13,7 +13,7 @@ import {
   closeModal,
 } from "../../redux/actions/index";
 
-export default function ProductCard({ title, price, color, image, id}) {
+export default function ProductCard({ title, price, color, image, id, index}) {
   const dispatch = useDispatch();
 
   const modal = useSelector((state) => state.modal);
@@ -24,9 +24,9 @@ export default function ProductCard({ title, price, color, image, id}) {
   );
 
   const cart = useSelector((state) => state.cart);
-  const isCart = cart.some(
-    (item) => item.title === title && item.price === price
-  );
+  // const isCart = cart.some(
+  //   (item) => item.title === title && item.price === price
+  // );
 
   const handleFav = () => {
     if (isFavorite) {
@@ -40,12 +40,10 @@ export default function ProductCard({ title, price, color, image, id}) {
   };
 
   const handleAddToCart = () => {
-    if (!isCart) {
-      const itemToAdd = cart.findIndex(
-        (item) => item.title === title && item.price === price
-      );
-      dispatch(addToCart(itemToAdd));
-    }
+    // if (!isCart) {
+      dispatch(addToCart(id, title, price, image, color));
+      dispatch(closeModal());
+    // }
   };
 
   const handleClick = () => {
@@ -116,13 +114,10 @@ ProductCard.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
-  addToCart: PropTypes.func,
-  addToFav: PropTypes.func,
-  removeFromFav: PropTypes.func,
 };
 
-ProductCard.defaultProps = {
-  title: "Product",
-  color: "None",
-  price: 0,
-};
+// ProductCard.defaultProps = {
+//   title: "Product",
+//   color: "None",
+//   price: 0,
+// };
