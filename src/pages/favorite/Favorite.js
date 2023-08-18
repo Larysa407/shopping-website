@@ -1,6 +1,7 @@
 import React from "react";
 import { FavoriteShow } from "./FavoriteShow";
 import { useSelector } from "react-redux";
+import "../../components/ProductCard/style.scss"
 
 export const Favorite = () => {
   const favorite = useSelector((state) => state.favorite);

@@ -3,6 +3,7 @@ import Modal from "../../components/Modal";
 import "./Cart.scss";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
+import Forms from "../../components/Form";
 import {
   openModal,
   closeModal,

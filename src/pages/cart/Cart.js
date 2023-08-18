@@ -1,11 +1,16 @@
 import React from "react";
 import { CartShow } from "./CartShow";
 import { useSelector } from "react-redux";
+import Forms from "../../components/Form";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
   return (
-      <div className="product-list">
+    <div className="wrapper">
+      <div className="form-container">
+      <Forms/>
+      </div>
+      <div className="cart-product-list">
         {cart.length !== 0 ? (
           cart.map((cartItem) => (
             <CartShow
@@ -20,6 +25,7 @@ export const Cart = () => {
         ) : (
           <p className="empty-cart">The cart is empty</p>
         )}
+      </div>
       </div>
   );
 };
