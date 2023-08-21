@@ -13,20 +13,13 @@ import {
   closeModal,
 } from "../../redux/actions/index";
 
-export default function ProductCard({ title, price, color, image, id, index}) {
+export default function ProductCard({ title, price, color, image, id, qty}) {
   const dispatch = useDispatch();
-
-  const products = useSelector((state) => state.products);
 
   const modal = useSelector((state) => state.modal);
 
   const favorite = useSelector((state) => state.favorite);
   const isFavorite = favorite.some(
-    (item) => item.title === title && item.price === price
-  );
-
-  const cart = useSelector((state) => state.cart);
-  const isCart = cart.some(
     (item) => item.title === title && item.price === price
   );
 
@@ -46,13 +39,8 @@ export default function ProductCard({ title, price, color, image, id, index}) {
 };
 
   const handleClick = () => {
-    if(!isCart){
-      const itemToCart = products.find(
-        (item) => item.title === title && item.price === price
-      );
-      dispatch(addToCart(itemToCart));
+      dispatch(addToCart({id, title, price, image, color, qty}));
       dispatch(openModal());
-    }
   };
 
   const handleCloseModal = () => {

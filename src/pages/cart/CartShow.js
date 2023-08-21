@@ -3,25 +3,25 @@ import Modal from "../../components/Modal";
 import "./Cart.scss";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import Forms from "../../components/Form";
 import {
   openModal,
   closeModal,
   removeFromCart,
 } from "../../redux/actions/index";
 
-export const CartShow = ({ title, color, image, price, id }) => {
+export const CartShow = ({ title, color, image, price, qty, id }) => {
   const dispatch = useDispatch();
 
   const modal = useSelector((state) => state.modal);
 
   const cart = useSelector((state) => state.cart);
  
-  const handleClickDelete = (id) => {
-      const itemToRemove = cart.findIndex(
-        (item) => item.title === title && item.price === price
-      );
-      dispatch(removeFromCart(itemToRemove));
+  const handleClickDelete = () => {
+      // const itemToRemove = cart.find(
+      //   (item) => item.id === id
+      // );
+      // console.log(itemToRemove)
+      dispatch(removeFromCart({id}));
   };
 
   const handleClick = () => {
@@ -47,6 +47,7 @@ export const CartShow = ({ title, color, image, price, id }) => {
         <p className="card-text">{color}</p>
         <div className="card-footer">
           <h4 className="card-text">{price} uah</h4>
+          <h3 className="card-qty">{qty} pcs</h3>
         </div>
       </div>
       {modal && (

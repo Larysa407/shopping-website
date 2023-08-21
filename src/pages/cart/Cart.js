@@ -19,6 +19,7 @@ export const Cart = () => {
                 price={cartItem.price}
                 image={cartItem.image}
                 color={cartItem.color}
+                qty={cartItem.qty}
                 id={cartItem.id}
                 key={cartItem.id}
               />

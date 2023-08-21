@@ -5,7 +5,8 @@
         "price": 9350,
         "image": "./images/sneakers-versace-jeans-couture.avif",
         "vendorCode": 122,
-        "color": "Color: black"
+        "color": "Color: black",
+        "qty":1
     },
 
     {   
@@ -14,7 +15,8 @@
         "price": 8200,
         "image": "./images/sneakers-ash.jpg",
         "vendorCode": 223,
-        "color": "Color: pink/grey"
+        "color": "Color: pink/grey",
+        "qty":1
     },
 
     {
@@ -23,7 +25,8 @@
         "price": 5600,
         "image": "./images/sneakers-bikkembergs.jpg",
         "vendorCode": 315,
-        "color": "Color: black"
+        "color": "Color: black",
+        "qty":1
     },
 
     {
@@ -32,7 +35,8 @@
         "price": 9500,
         "image": "./images/sneakers-adidas.jpg",
         "vendorCode": 457,
-        "color": "Color: black"
+        "color": "Color: black",
+        "qty":1
     },
 
     {
@@ -41,7 +45,8 @@
         "price": 8750,
         "image": "./images/bag-valentino.jpg",
         "vendorCode": 537,
-        "color": "Color: red"
+        "color": "Color: red",
+        "qty":1
     },
 
     {
@@ -50,7 +55,8 @@
         "price": 6500,
         "image": "./images/bag-trussardi.jpg",
         "vendorCode": 653,
-        "color": "Color: beige"
+        "color": "Color: beige",
+        "qty":1
     },
 
     {
@@ -59,7 +65,8 @@
         "price": 3650,
         "image": "./images/bag-twin-set.jpg",
         "vendorCode": 733,
-        "color": "Color: black"
+        "color": "Color: black",
+        "qty":1
     },
 
     {
@@ -68,7 +75,8 @@
         "price": 7500,
         "image": "./images/bag-armani.jpg",
         "vendorCode": 856,
-        "color": "Color: white/black"
+        "color": "Color: white/black",
+        "qty":1
     },
 
     {
@@ -77,7 +85,8 @@
         "price": 1750,
         "image": "./images/belt-armani.png",
         "vendorCode": 930,
-        "color": "Color: blue"
+        "color": "Color: blue",
+        "qty":1
     },
 
     {
@@ -86,7 +95,8 @@
         "price": 2100,
         "image": "./images/belt-boss.jpg",
         "vendorCode": 1012,
-        "color": "Color: black"
+        "color": "Color: black",
+        "qty":1
     },
 
     {
@@ -95,7 +105,8 @@
         "price": 2000,
         "image": "./images/belt-karl-lagerfeld.jpg",
         "vendorCode": 1132,
-        "color": "Color: black"
+        "color": "Color: black",
+        "qty":1
     },
 
     {
@@ -104,7 +115,8 @@
         "price": 1950,
         "image": "./images/belt-philipp-plein.jpg",
         "vendorCode": 1242,
-        "color": "Color: black"
+        "color": "Color: black",
+        "qty":1
     }
 
 ]
