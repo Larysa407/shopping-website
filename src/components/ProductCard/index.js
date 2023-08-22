@@ -13,10 +13,10 @@ import {
   closeModal,
 } from "../../redux/actions/index";
 
-export default function ProductCard({ title, price, color, image, id, qty}) {
+export default function ProductCard({ title, price, color, image, id, qty }) {
   const dispatch = useDispatch();
 
-  const modal = useSelector((state) => state.modal);
+  const modal = useSelector((state) => state.modal === id);
 
   const favorite = useSelector((state) => state.favorite);
   const isFavorite = favorite.some(
@@ -34,14 +34,8 @@ export default function ProductCard({ title, price, color, image, id, qty}) {
     }
   };
 
-  const handleAddToCart = () => {
-    dispatch(closeModal());
-};
-
   const handleClick = () => {
-      dispatch(addToCart({id, title, price, image, color, qty}));
-      dispatch(openModal(id));
-      console.log(id)
+    dispatch(openModal(id));
   };
 
   const handleCloseModal = () => {
@@ -52,10 +46,15 @@ export default function ProductCard({ title, price, color, image, id, qty}) {
     dispatch(closeModal());
   };
 
+  const handleAddToCart = () => {
+    dispatch(addToCart({ id, title, price, image, color, qty }));
+    dispatch(closeModal());
+  };
+
   return (
     <div className="card">
       <div className="card-header">
-        <img className="card-img" src={image} alt="image of product" />
+        <img className="card-img" src={image} alt="product" />
         <Star
           className="card-fav_item"
           size={20}

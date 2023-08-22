@@ -1,4 +1,8 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, REMOVE_ALL_FROM_CART } from "../type/index";
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  REMOVE_ALL_FROM_CART,
+} from "../type/index";
 
 export const cartReducer = (state = [], action) => {
   switch (action.type) {
@@ -12,8 +16,8 @@ export const cartReducer = (state = [], action) => {
     case REMOVE_FROM_CART:
       return state.filter(({ id }) => id !== action.payload);
     case REMOVE_ALL_FROM_CART:
-      localStorage.removeItem("persist:root")
-      return state = []
+      localStorage.removeItem("persist:root");
+      return (state = []);
     default:
       return state;
   }

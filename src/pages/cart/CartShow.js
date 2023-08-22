@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "../../components/Modal";
 import "./Cart.scss";
 import PropTypes from "prop-types";
@@ -12,21 +12,14 @@ import {
 export const CartShow = ({ title, color, image, price, qty, id }) => {
   const dispatch = useDispatch();
 
-  const modal = useSelector((state) => state.modal);
-
-  const cart = useSelector((state) => state.cart);
+  const modal = useSelector((state) => state.modal === id);
  
   const handleClickDelete = () => {
-      // const itemToRemove = cart.find(
-      //   (item) => item.id === id
-      // );
-      // console.log(itemToRemove)
       dispatch(removeFromCart(id));
   };
 
   const handleClick = () => {
-    dispatch(openModal());
-    
+    dispatch(openModal(id));
   };
 
   const handleCloseModal = () => {
@@ -41,7 +34,7 @@ export const CartShow = ({ title, color, image, price, qty, id }) => {
     <div className="card">
       <div className="cart-header">
         <span className="cart-close-btn" onClick={handleClick}></span>
-        <img className="cart-img" src={image} alt="image of product" />
+        <img className="cart-img" src={image} alt="product" />
       </div>
       <div className="card-body">
         <h3 className="card-title">{title}</h3>
