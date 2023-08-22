@@ -40,7 +40,8 @@ export default function ProductCard({ title, price, color, image, id, qty}) {
 
   const handleClick = () => {
       dispatch(addToCart({id, title, price, image, color, qty}));
-      dispatch(openModal());
+      dispatch(openModal(id));
+      console.log(id)
   };
 
   const handleCloseModal = () => {

@@ -6,6 +6,7 @@ import {
     SET_DATA,
     MODAL_OPEN,
     MODAL_CLOSE,
+    REMOVE_ALL_FROM_CART
   } from "../type/index";
   
   export const addToCart = (item) => ({
@@ -48,5 +49,10 @@ import {
   
   export const closeModal = () => ({
     type: MODAL_CLOSE
+  });
+
+  export const removeAllFromCart = (item) => ({
+    type: REMOVE_ALL_FROM_CART,
+    payload: item
   });
   

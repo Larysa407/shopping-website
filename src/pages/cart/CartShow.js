@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   openModal,
   closeModal,
-  removeFromCart,
+  removeFromCart
 } from "../../redux/actions/index";
 
 export const CartShow = ({ title, color, image, price, qty, id }) => {
@@ -21,11 +21,12 @@ export const CartShow = ({ title, color, image, price, qty, id }) => {
       //   (item) => item.id === id
       // );
       // console.log(itemToRemove)
-      dispatch(removeFromCart({id}));
+      dispatch(removeFromCart(id));
   };
 
   const handleClick = () => {
     dispatch(openModal());
+    
   };
 
   const handleCloseModal = () => {

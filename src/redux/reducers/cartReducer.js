@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../type/index";
+import { ADD_TO_CART, REMOVE_FROM_CART, REMOVE_ALL_FROM_CART } from "../type/index";
 
 export const cartReducer = (state = [], action) => {
   switch (action.type) {
@@ -10,9 +10,10 @@ export const cartReducer = (state = [], action) => {
       }
       return [...state, { ...action.payload, qty: 1 }];
     case REMOVE_FROM_CART:
-      const index = state.filter((item) => item.id !== action.payload.id)
-      console.log(index)
-      return index
+      return state.filter(({ id }) => id !== action.payload);
+    case REMOVE_ALL_FROM_CART:
+      localStorage.removeItem("persist:root")
+      return state = []
     default:
       return state;
   }

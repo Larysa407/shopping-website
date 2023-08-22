@@ -7,3 +7,4 @@ export const IS_MODAL = "IS_MODAL";
 export const IS_FAVORITE = "IS_FAVORITE";
 export const MODAL_OPEN = "MODAL_OPEN";
 export const MODAL_CLOSE = "MODAL_CLOSE";
+export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
