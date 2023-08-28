@@ -7,7 +7,12 @@ describe("modalReducer works", () => {
   });
 
   test("open modal", () => {
-    expect(modalReducer(initialState, { type: MODAL_OPEN })).toEqual({ modal: action.payload});
+    const action = {
+      type: MODAL_OPEN,
+      payload: { id: 1 },
+    };
+    const newState = modalReducer(initialState, action);
+    expect(newState).toEqual({ id: 1 });
   });
 
   test("close modal", () => {
