@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { dataReducer } from "./dataReducer";
-import { modalReducer } from "./modalReducer";
+import { modalReducer } from "./modalReducer/modalReducer";
 import { favoriteReducer } from "./favoriteReducer";
 import { cartReducer } from "./cartReducer";
 
