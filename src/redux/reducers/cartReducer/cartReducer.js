@@ -17,7 +17,8 @@ export const cartReducer = (state = initialState, action) => {
       }
       return [...state, { ...action.payload, qty: 1 }];
     case REMOVE_FROM_CART:
-      return state.filter(({ id }) => id !== action.payload);
+      const index = action.payload;
+      return state.filter((item, idx) => idx !== index);
     case REMOVE_ALL_FROM_CART:
       localStorage.removeItem("persist:root");
       return initialState
