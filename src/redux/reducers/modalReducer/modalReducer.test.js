@@ -6,7 +6,7 @@ describe("modalReducer works", () => {
     expect(modalReducer()).toEqual(initialState);
   });
 
-  test("open modal", () => {
+  test("open first modal window", () => {
     const action = {
       type: MODAL_OPEN,
       payload: { id: 1 },
@@ -15,7 +15,7 @@ describe("modalReducer works", () => {
     expect(newState).toEqual({ id: 1 });
   });
 
-  test("close modal", () => {
+  test("close modal window", () => {
     expect(modalReducer(initialState, { type: MODAL_CLOSE })).toEqual(null);
   });
 });

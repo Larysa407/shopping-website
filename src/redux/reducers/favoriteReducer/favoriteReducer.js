@@ -1,7 +1,9 @@
-import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../type/index";
+import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../../type/index";
 
-export const favoriteReducer = (state = [], action) => {
-  switch (action.type) {
+export const initialState = []
+
+export const favoriteReducer = (state = initialState, action) => {
+  switch (action && action.type) {
     case ADD_TO_FAVORITES:
       return [...state, action.payload];
     case REMOVE_FROM_FAVORITES:

@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { dataReducer } from "./dataReducer";
+import { dataReducer } from "./dataReducer/dataReducer";
 import { modalReducer } from "./modalReducer/modalReducer";
-import { favoriteReducer } from "./favoriteReducer";
-import { cartReducer } from "./cartReducer";
+import { favoriteReducer } from "./favoriteReducer/favoriteReducer";
+import { cartReducer } from "./cartReducer/cartReducer";
 
 const rootReducer = combineReducers({
   products: dataReducer,
