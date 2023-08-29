@@ -13,9 +13,14 @@ export const CartShow = ({ title, color, image, price, qty, id }) => {
   const dispatch = useDispatch();
 
   const modal = useSelector((state) => state.modal === id);
+
+  const cart = useSelector((state) => state.cart)
  
   const handleClickDelete = () => {
-      dispatch(removeFromCart(id));
+    const itemToRemove = cart.findIndex(
+      (item) => item.title === title && item.price === price
+    );
+      dispatch(removeFromCart(itemToRemove));
   };
 
   const handleClick = () => {
