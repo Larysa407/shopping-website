@@ -1,7 +1,7 @@
 import React from "react";
-import "./style.scss";
 import Button from "../Button/index";
 import Modal from "../Modal/index";
+import "./style.scss"
 import { Star } from "phosphor-react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,12 +52,14 @@ export default function ProductCard({ title, price, color, image, id, qty }) {
   };
 
   return (
-<tr>
-    <td>{title}</td>
-    <td>{image}</td>
-    <td>{color}</td>
-    <td>{price}</td>
-</tr>
+    <div className="table">
+      <tr>
+        <td><h3>{title}</h3></td>
+        <td><img className="table-image" src={image} alt="product"></img></td>
+        <td><p>{color}</p></td>
+        <td><p>{price} uah</p></td>
+      </tr>
+    </div>
   );
 }
 
