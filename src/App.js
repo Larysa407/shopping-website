@@ -7,6 +7,7 @@ import { Favorite } from "./pages/favorite/Favorite";
 import ProductList from "./components/ProductList/index";
 import { useDispatch } from "react-redux";
 import { setData } from "./redux/actions/index";
+import { SwitchProvider } from "./components/Context/index";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
   }, []);
 
   return (
+    <SwitchProvider>
     <Router>
       <Header />
       <Routes>
@@ -28,6 +30,7 @@ function App() {
         <Route path="/favorite" element={<Favorite />} />
       </Routes>
     </Router>
+    </SwitchProvider>
   );
 }
 
