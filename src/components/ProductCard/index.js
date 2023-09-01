@@ -74,25 +74,9 @@ export default function ProductCard({ title, price, color, image, id, qty }) {
                 text="Add this product to the cart?"
                 closeButton={true}
                 closeModal={handleCloseModal}
-                actions={
-                  <>
-                    <button
-                      href="/"
-                      className="confirmBtn"
-                      id={id}
-                      onClick={handleAddToCart}
-                    >
-                      Add
-                    </button>
-                    <button
-                      href="/"
-                      className="cancelBtn"
-                      onClick={handleCloseModal}
-                    >
-                      Cancel
-                    </button>
-                  </>
-                }
+                actionBtn="Add"
+                cancelBtn="Cancel"
+                addToCart={handleAddToCart}
                 clickOutside={handleClickOutside}
               />
             )}

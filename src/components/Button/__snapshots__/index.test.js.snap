@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component snapshotTest for Button component 1`] = `
+<button
+  className="btn"
+  style={
+    Object {
+      "backgroundColor": undefined,
+    }
+  }
+>
+  Button
+</button>
+`;

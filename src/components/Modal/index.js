@@ -7,8 +7,11 @@ export default function Modal({
   closeButton,
   closeModal,
   text,
-  actions,
+  actionBtn,
+  cancelBtn,
+  addToCart,
   clickOutside,
+  removeFromCart
 }) {
   return (
     <div className="modal-container" onClick={clickOutside}>
@@ -16,11 +19,14 @@ export default function Modal({
         <h3 className="modalHeader">
           {header}
           {closeButton && (
-            <span className="closeBtn" onClick={closeModal}></span>
+            <span className="closeBtn" onClick={closeModal} role="closeBtn"></span>
           )}
         </h3>
-        <div className="modalContent">{text}</div>
-        {actions && <div className="actionsBtn">{actions}</div>}
+        <div className="modalContent" role="text">{text}</div>
+        <div className="actionsBtn">
+          <button className="confirmBtn" onClick={addToCart || removeFromCart}>{actionBtn}</button>
+          <button className="cancelBtn" onClick={closeModal}>{cancelBtn} </button>
+        </div>
       </div>
     </div>
   );

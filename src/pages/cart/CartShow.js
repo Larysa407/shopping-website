@@ -54,20 +54,9 @@ export const CartShow = ({ title, color, image, price, qty, id }) => {
           text="Do you want to remove this item from cart?"
           closeButton={true}
           closeModal={handleCloseModal}
-          actions={
-            <>
-              <button
-                href="/"
-                className="confirmBtn"
-                onClick={handleClickDelete}
-              >
-                Remove
-              </button>
-              <button href="/" className="cancelBtn" onClick={handleCloseModal}>
-                Cancel
-              </button>
-            </>
-          }
+          actionBtn="Delete"
+          cancelBtn="Cancel"
+          removeFromCart={handleClickDelete}
           clickOutside={handleClickOutside}
         />
       )}
