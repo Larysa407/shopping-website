@@ -11,34 +11,30 @@ import ProductTable from "../ProductTable/index";
 export default function ProductList() {
   const products = useSelector((state) => state.products);
 
-  const { isSelected, setIsSelected } = useContext(SwitchContext);
+  const { isSelected } = useContext(SwitchContext);
 
   return (
     <>
       <Switcher />
       {isSelected ? (
-        <>
-          <table>
-            <tr>
-              <th>Title</th>
-              <th>Image</th>
-              <th>Color</th>
-              <th>Price</th>
-            </tr>
-          </table>
-          <div className="product-list">
-            {products.map((product, index) => (
-              <ProductTable
-                title={product.title}
-                color={product.color}
-                price={product.price}
-                image={product.image}
-                id={product.id}
-                key={index}
-              />
-            ))}
-          </div>
-        </>
+        <table>
+          <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Color</th>
+            <th>Price</th>
+          </tr>
+          {products.map((product, index) => (
+            <ProductTable
+              title={product.title}
+              color={product.color}
+              price={product.price}
+              image={product.image}
+              id={product.id}
+              key={index}
+            />
+          ))}
+        </table>
       ) : (
         <div className="product-list">
           {products.map((product, index) => (

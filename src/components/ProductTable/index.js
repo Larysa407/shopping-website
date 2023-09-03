@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button/index";
 import Modal from "../Modal/index";
-import "./style.scss"
+import "./style.scss";
 import { Star } from "phosphor-react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,14 +52,35 @@ export default function ProductCard({ title, price, color, image, id, qty }) {
   };
 
   return (
-    <div className="table">
-      <tr>
-        <td><h3>{title}</h3></td>
-        <td><img className="table-image" src={image} alt="product"></img></td>
-        <td><p>{color}</p></td>
-        <td><p>{price} uah</p></td>
-      </tr>
-    </div>
+    <tr>
+      <td>
+        <img className="table-image" src={image} alt="product"></img>
+      </td>
+      <td>{title}</td>
+      <td>{color}</td>
+      <td>{price} uah</td>
+      <td>
+        <Star
+          size={20}
+          onClick={handleFav}
+          weight={isFavorite ? "fill" : "light"}
+        />
+      </td>
+      <td>
+        <Button text="To cart" onClick={handleClick} />
+        {modal && (
+          <Modal
+            text="Add this product to the cart?"
+            closeButton={true}
+            closeModal={handleCloseModal}
+            actionBtn="Add"
+            cancelBtn="Cancel"
+            addToCart={handleAddToCart}
+            clickOutside={handleClickOutside}
+          />
+        )}
+      </td>
+    </tr>
   );
 }
 

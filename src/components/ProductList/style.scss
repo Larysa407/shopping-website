@@ -3,7 +3,6 @@
     margin-right: 33px;
     display: flex;
     justify-content: flex-end;
-
 }
 
 .blockView{
@@ -15,3 +14,19 @@
     background-color: #fff;
     border: none;
 }
+
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+    
+
+    td {
+        text-align: left;
+        padding: 8px;
+      }
+  }
+
+  
