@@ -1,11 +1,10 @@
 import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  REMOVE_ALL_FROM_CART,
+  REMOVE_ALL_FROM_CART
 } from "../../type/index";
 
-export const initialState = []
-
+export const initialState = [];
 
 export const cartReducer = (state = initialState, action) => {
   switch (action && action.type) {
@@ -21,7 +20,7 @@ export const cartReducer = (state = initialState, action) => {
       return state.filter((item, idx) => idx !== index);
     case REMOVE_ALL_FROM_CART:
       localStorage.removeItem("persist:root");
-      return initialState
+      return initialState;
     default:
       return state;
   }

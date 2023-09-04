@@ -43,6 +43,15 @@
     }
   }
 
+  &-qty{
+    display: flex;
+    align-items: center;
+
+    &-number{
+      margin: 0 5px;
+    }
+  }
+
   &-fav_item {
     cursor: pointer;
     position: absolute;

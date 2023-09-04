@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   products: dataReducer,
   modal: modalReducer,
   favorite: favoriteReducer,
-  cart: cartReducer,
+  cart: cartReducer
 });
 
 export default rootReducer;
